@@ -14,13 +14,14 @@ function App() {
 
   async function getAllSongs(){
     const response = await axios.get('https://localhost:7114/api/Songs');
+    debugger
     setSongs(response.data);
   }
 
   return (
-    <div className='container-fluid'>
+    <div>
       <div>
-        <MusicTable parentTable={song} />
+        <MusicTable parentTable={songs} />
       </div>
       
       <button onClick={() => getAllSongs()}>Get All Songs</button>

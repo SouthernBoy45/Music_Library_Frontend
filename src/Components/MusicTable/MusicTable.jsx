@@ -1,14 +1,16 @@
 
 const MusicTable = (props) => {
+    
     return(
         <table className="table">
             <thead>
                 <tr>
-                   <th>Title</th> 
-                   <th>Artist</th> 
-                   <th>Album</th> 
-                   <th>Release Date</th> 
-                   <th>Genre</th> 
+                    <th> </th>
+                    <th>Title</th> 
+                    <th>Artist</th> 
+                    <th>Album</th> 
+                    <th>Release Date</th> 
+                    <th>Genre</th> 
                 </tr>
             </thead>
             <tbody>
@@ -16,11 +18,11 @@ const MusicTable = (props) => {
                     return(
                         <tr key={index}>
                             <td>{index +1}</td>
-                            <td>{song.Title}</td>
-                            <td>{song.Artist}</td>
-                            <td>{song.Album}</td>
-                            <td>{song.ReleaseDate}</td>
-                            <td>{song.Genre}</td>
+                            <td>{song.title}</td>
+                            <td>{song.artist}</td>
+                            <td>{song.album}</td>
+                            <td>{song.releaseDate.split("T")[0]}</td>
+                            <td>{song.genre}</td>
                         </tr>
                     )
                 })}
