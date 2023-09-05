@@ -4,8 +4,14 @@ import axios from 'axios';
 function App() {
 
   useEffect(() => {
-    const response = await 
+    getAllSongs();
   }, []);
+
+
+  async function getAllSongs(){
+    const response = await axios.get('https://localhost:7114/api/Songs')
+    console.log(response.data);
+  }
 
   return (
     <div>
