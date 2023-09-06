@@ -14,7 +14,6 @@ function App() {
 
   async function getAllSongs(){
     const response = await axios.get('https://localhost:7114/api/Songs');
-    debugger
     setSongs(response.data);
   }
 
@@ -22,6 +21,9 @@ function App() {
     <div>
       <div>
         <MusicTable parentTable={songs} />
+      </div>
+      <div>
+        <SearchBar />
       </div>
       
       <button onClick={() => getAllSongs()}>Get All Songs</button>
