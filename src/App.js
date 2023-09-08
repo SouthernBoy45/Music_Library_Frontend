@@ -10,6 +10,7 @@ function App() {
   useEffect(() => {
     getAllSongs();
   }, []);
+  
 
 
   async function getAllSongs(){
@@ -18,9 +19,17 @@ function App() {
   }
 
   function createNewSearch(search) {
-    let tempSearch = [search, ...songs];
+    let results = songs.filter(function(userInput){
+      if (userInput === songs.title || userInput === songs.artist ||
+        userInput === songs.album || userInput === songs.releaseDate ||
+        userInput === songs.genre)
+        return results;
+      })
+
+    let tempSearch = [...songs, search];
     setSongs(tempSearch);
   }
+
 
   return (
     <div>
@@ -30,7 +39,6 @@ function App() {
       <div>
         <SearchBar searchBarProperty={createNewSearch}/>
       </div>
-      <button onClick={() => getAllSongs()}>Get All Songs</button>
     </div>
   );
 }

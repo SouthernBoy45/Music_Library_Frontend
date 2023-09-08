@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const SearchBar = (props) => {
     
-    const [userInput, setUserInput] = useState();
+    const [userInput, setUserInput] = useState("");
 
 
     function handleSubmit(event) {
@@ -12,11 +12,11 @@ const SearchBar = (props) => {
            userInput: userInput
         };
         props.searchBarProperty(newSearch);
-    }
+    };
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <label>Search For A Song</label>
+            <placeholder>Search For A Song</placeholder>
             <input type='text' value = {userInput} onChange={(event) => setUserInput(event.target.value)}/>
             <button type='submit'> Search</button>
         </form>
