@@ -17,15 +17,19 @@ function App() {
     setSongs(response.data);
   }
 
+  function createNewSearch(search) {
+    let tempSearch = [search, ...songs];
+    setSongs(tempSearch);
+  }
+
   return (
     <div>
       <div>
         <MusicTable parentTable={songs} />
       </div>
       <div>
-        <SearchBar />
+        <SearchBar searchBarProperty={createNewSearch}/>
       </div>
-      
       <button onClick={() => getAllSongs()}>Get All Songs</button>
     </div>
   );

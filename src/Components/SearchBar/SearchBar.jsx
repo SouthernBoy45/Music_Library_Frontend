@@ -2,29 +2,25 @@ import React, { useState } from 'react';
 
 
 const SearchBar = (props) => {
+    
+    const [userInput, setUserInput] = useState();
 
-    const [title, setTitle] = useState('');
-    const [artist, setArtist] = useState('');
-    const [album, setAlbum] = useState('');
-    const [releaseDate, setReleaseDate] = useState('');
-    const [genre, setGenre] = useState('');
 
-    function handleSearch(event){
+    function handleSubmit(event) {
         event.preventDefault();
-        setTitle(event.target);
-        setArtist(event.target);
-        setAlbum(event.target);
-        setReleaseDate(event.target);
-        setGenre(event.target);
-    };
+        let newSearch = {
+           userInput: userInput
+        };
+        props.searchBarProperty(newSearch);
+    }
 
     return ( 
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSubmit}>
             <label>Search For A Song</label>
-            <input type='text' value = {title} onChange={(event) => handleSearch(event.target.value)}
-            />
+            <input type='text' value = {userInput} onChange={(event) => setUserInput(event.target.value)}/>
+            <button type='submit'> Search</button>
         </form>
      );
-}
+};
  
 export default SearchBar;
