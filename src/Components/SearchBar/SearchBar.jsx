@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 
 const SearchBar = (props) => {
     
-    const [userInput, setUserInput] = useState("");
-
+    const [userInput, setUserInput] = useState([]);
 
     function handleSubmit(event) {
         event.preventDefault();

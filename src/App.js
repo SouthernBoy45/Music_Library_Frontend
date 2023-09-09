@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useTransition } from 'react';
 import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import SearchBar from './Components/SearchBar/SearchBar';
@@ -11,25 +11,24 @@ function App() {
     getAllSongs();
   }, []);
   
-
-
   async function getAllSongs(){
     const response = await axios.get('https://localhost:7114/api/Songs');
     setSongs(response.data);
   }
 
-  function createNewSearch(search) {
-    let results = songs.filter(function(userInput){
-      if (userInput === songs.title || userInput === songs.artist ||
-        userInput === songs.album || userInput === songs.releaseDate ||
-        userInput === songs.genre)
-        return results;
+  function createNewSearch(userInput) {
+    let results = songs.filter(function(el){
+      if (el.title.includes(userInput) ||
+          el.artist.includes(userInput) ||
+          el.album.includes(userInput) ||
+          el.releaseDate.includes(userInput) ||
+          el.genre.includes(userInput))
+          return true;
       })
 
-    let tempSearch = [...songs, search];
+    let tempSearch = [...results, songs];
     setSongs(tempSearch);
   }
-
 
   return (
     <div>
