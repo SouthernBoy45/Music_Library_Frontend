@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useTransition } from 'react';
+import React, { useState, useEffect, } from 'react';
 import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import SearchBar from './Components/SearchBar/SearchBar';
@@ -23,13 +23,14 @@ function App() {
           el.album.includes(userInput) ||
           el.releaseDate.includes(userInput) ||
           el.genre.includes(userInput))
-          return true;
+          return results;
       })
 
-    let tempSearch = [...results, songs];
+    let tempSearch = [...songs, userInput];
     setSongs(tempSearch);
-  }
-
+    tempSearch.map();
+    }
+  
   return (
     <div>
       <div>
