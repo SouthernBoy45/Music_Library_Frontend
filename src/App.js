@@ -16,21 +16,19 @@ function App() {
     setSongs(response.data);
   }
 
-  function createNewSearch(userInput) {
+  function createNewSearch() {
     let results = songs.filter(function(el){
-      if (el.title.includes(userInput) ||
-          el.artist.includes(userInput) ||
-          el.album.includes(userInput) ||
-          el.releaseDate.includes(userInput) ||
-          el.genre.includes(userInput))
+      if (el === songs.title || el === songs.artist ||
+          el === songs.album || el === songs.releaseDate ||
+          el === songs.genre)
           return results;
       })
 
-    let tempSearch = [...songs, userInput];
+    let tempSearch = [...songs, results];
     setSongs(tempSearch);
     tempSearch.map();
     }
-  
+
   return (
     <div>
       <div>
