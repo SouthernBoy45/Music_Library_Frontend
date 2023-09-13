@@ -21,7 +21,7 @@ const MusicTable = (props) => {
                             <td>{song.title}</td>
                             <td>{song.artist}</td>
                             <td>{song.album}</td>
-                            <td>{song.releaseDate}</td>
+                            <td>{song.releaseDate.split('T')[0]}</td>
                             <td>{song.genre}</td>
                         </tr>
                     )

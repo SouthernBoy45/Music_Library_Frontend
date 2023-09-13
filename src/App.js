@@ -2,6 +2,7 @@ import React, { useState, useEffect, } from 'react';
 import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import SearchBar from './Components/SearchBar/SearchBar';
+import AddSongForm from './Components/AddSongForm/AddSongForm';
 
 function App() {
 
@@ -16,6 +17,14 @@ function App() {
     setSongs(response.data);
   }
 
+  async function addNewSong(newSong) {
+    const response = await axios.post('https://localhost:7114/api/Songs', 
+    newSong);
+    if(response.status === 201){
+    await getAllSongs();
+    }
+}
+
   function createNewSearch(searchText) {
     let sanitizedText = searchText.toLowerCase();
     let filteredSongs = songs.filter((el) => {
@@ -25,6 +34,9 @@ function App() {
           return true;
       })
     setSongs(filteredSongs);
+
+    if(searchText === "") 
+      getAllSongs();
     }
 
   return (
@@ -34,6 +46,9 @@ function App() {
       </div>
       <div>
         <SearchBar searchBarProperty={createNewSearch}/>
+      </div>
+      <div>
+        <AddSongForm addSongFormProp={addNewSong}/>
       </div>
     </div>
   );
