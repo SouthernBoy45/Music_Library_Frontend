@@ -16,17 +16,15 @@ function App() {
     setSongs(response.data);
   }
 
-  function createNewSearch() {
-    let results = songs.filter(function(el){
-      if (el === songs.title || el === songs.artist ||
-          el === songs.album || el === songs.releaseDate ||
-          el === songs.genre)
-          return results;
+  function createNewSearch(searchText) {
+    let sanitizedText = searchText.toLowerCase();
+    let filteredSongs = songs.filter((el) => {
+      if (el.title.toLowerCase().includes(sanitizedText) || el.artist.toLowerCase().includes(sanitizedText) ||
+          el.album.toLowerCase().includes(sanitizedText) || el.releaseDate.toLowerCase().includes(sanitizedText) ||
+          el.genre.toLowerCase().includes(sanitizedText))
+          return true;
       })
-
-    let tempSearch = [...songs, results];
-    setSongs(tempSearch);
-    tempSearch.map();
+    setSongs(filteredSongs);
     }
 
   return (

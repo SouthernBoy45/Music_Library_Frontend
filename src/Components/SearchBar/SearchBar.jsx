@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
 
 const SearchBar = (props) => {
     
-    const [userInput, setUserInput] = useState([]);
+    const [userInput, setUserInput] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
-        let newSearch = {
-           userInput: userInput
-        };
-        props.searchBarProperty(newSearch);
+        props.searchBarProperty(userInput);
     };
+
+
 
     return ( 
         <form onSubmit={handleSubmit}>
