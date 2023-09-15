@@ -18,11 +18,19 @@ function App() {
   }
 
   async function addNewSong(newSong) {
-    const response = await axios.post('https://localhost:7114/api/Songs', 
-    newSong);
-    if(response.status === 201){
-    await getAllSongs();
+    console.log(newSong)
+    try {
+      const response = await axios.post('https://localhost:7114/api/Songs', newSong);
+      if(response.status === 201){
+        setSongs(response.data);
+        await getAllSongs();
     }
+      
+    } catch (error) {
+      console.log(error.response.data)
+      
+    }
+   
 }
 
   function createNewSearch(searchText) {

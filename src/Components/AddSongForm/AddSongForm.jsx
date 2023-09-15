@@ -11,18 +11,18 @@ const AddSongForm = (props) => {
     function handleNewSong(event) {
         event.preventDefault()
         let newEntry = {
-            songTitle: songTitle,
-            songArtist: songArtist,
-            songAlbum: songAlbum,
-            songReleaseDate: songReleaseDate,
-            songGenre: songGenre
+            title: songTitle,
+            artist: songArtist,
+            album: songAlbum,
+            releaseDate: songReleaseDate,
+            genre: songGenre
         }
         props.addSongFormProp(newEntry)
     }
 
     return ( 
     
-    <form onSumbit= {handleNewSong}>
+    <form onSubmit= {handleNewSong}>
         <label>Title</label>
         <input type='text' value={songTitle} onChange={(event)=> setSongTitle(event.target.value)}/>
         <label>Artist</label>
