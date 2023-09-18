@@ -1,14 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import DeleteButton from '../DeleteButton/DeleteButton';
 
 const MusicTable = (props) => {
 
-    async function deleteSong(){
-        const response = await axios.delete('https://localhost:7114/api/Songs', {method: 'DELETE'});
-        return(response.data);
-      }
-
+    async function handleDelete(badSong){
+        console.log(badSong)
+        try {
+        const response = await axios.delete('https://localhost:7114/api/Songs');
+          if(response.status === 201){
+            return (response.data)
+          }
+          } catch (error) {
+            console.log(error.response.data)
+          }}
     
     return(
         <table className="table">
@@ -32,7 +36,7 @@ const MusicTable = (props) => {
                             <td>{song.album}</td> 
                             <td>{song.releaseDate.split('T')[0]}</td> 
                             <td>{song.genre}</td>
-                            <DeleteButton deleteButtonProp = {deleteSong}/>
+                            <td><button onClick = {() => handleDelete(MusicTable.index)}>Delete</button></td>
                          </tr>
                     )})
                 }

@@ -3,7 +3,6 @@ import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import SearchBar from './Components/SearchBar/SearchBar';
 import AddSongForm from './Components/AddSongForm/AddSongForm';
-import DeleteButton from './Components/DeleteButton/DeleteButton';
 
 function App() {
 
@@ -27,11 +26,7 @@ function App() {
     } 
     } catch (error) {
       console.log(error.response.data)
-      
-    }
-}
-
-
+    }}
 
   function createNewSearch(searchText) {
     let sanitizedText = searchText.toLowerCase();

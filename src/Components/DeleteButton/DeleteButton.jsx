@@ -1,17 +1,12 @@
-import React, {useState} from 'react';
+// import React from 'react';
 
-const DeleteButton = (props) => {
+// const DeleteButton = (props) => {
 
-    const [badSong, setBadSong] = useState("");
 
-    function handleDelete(event){
-        event.preventDefault();
-        props.deleteButtonProp(badSong);
-    }
 
-    return ( 
-        <button type='delete' value={badSong} onClick={handleDelete((event) => setBadSong())}>Delete</button>
-     )
-}
+//     return ( 
+//         <button type='delete' value={badSong} onClick={handleDelete(() => setBadSong())}>Delete</button>
+//      )
+// }
  
-export default DeleteButton;
+// export default DeleteButton;
