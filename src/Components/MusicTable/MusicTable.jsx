@@ -1,5 +1,12 @@
 
 const MusicTable = (props) => {
+
+    function handleDelete(event){
+        async function deleteSong(){
+            const response = await axios.delete('https://localhost:7114/api/Songs')
+        }
+        event.preventDefault();
+    }
     
     return(
         <table className="table">
@@ -15,17 +22,18 @@ const MusicTable = (props) => {
             </thead>
             <tbody>
                 {props.parentTable.map((song, index)=> {
-                    return(
+                     return(
                         <tr key={index}>
-                            <td>{index +1}</td>
-                            <td>{song.title}</td>
-                            <td>{song.artist}</td>
-                            <td>{song.album}</td>
-                            <td>{song.releaseDate.split('T')[0]}</td>
+                            <td>{index +1}</td> 
+                            <td>{song.title}</td> 
+                            <td>{song.artist}</td> 
+                            <td>{song.album}</td> 
+                            <td>{song.releaseDate.split('T')[0]}</td> 
                             <td>{song.genre}</td>
-                        </tr>
-                    )
-                })}
+                            <button type='delete' onClick={handleDelete}>Delete</button>
+                         </tr>
+                    )})
+                }
             </tbody>
         </table>
     )

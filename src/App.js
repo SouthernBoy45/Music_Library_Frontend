@@ -50,7 +50,7 @@ function App() {
   return (
     <div>
       <div>
-        <MusicTable parentTable={songs} />
+        {songs && <MusicTable parentTable={songs} />}
       </div>
       <div>
         <SearchBar searchBarProperty={createNewSearch}/>
