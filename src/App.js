@@ -3,6 +3,7 @@ import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import SearchBar from './Components/SearchBar/SearchBar';
 import AddSongForm from './Components/AddSongForm/AddSongForm';
+import DeleteButton from './Components/DeleteButton/DeleteButton';
 
 function App() {
 
@@ -22,16 +23,15 @@ function App() {
     try {
       const response = await axios.post('https://localhost:7114/api/Songs', newSong);
       if(response.status === 201){
-        setSongs(response.data);
         await getAllSongs();
-    }
-      
+    } 
     } catch (error) {
       console.log(error.response.data)
       
     }
-   
 }
+
+
 
   function createNewSearch(searchText) {
     let sanitizedText = searchText.toLowerCase();
