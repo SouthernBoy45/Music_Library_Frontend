@@ -3,6 +3,7 @@ import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import SearchBar from './Components/SearchBar/SearchBar';
 import AddSongForm from './Components/AddSongForm/AddSongForm';
+import SongRow from './Components/SongRow/SongRow';
 
 function App() {
 
@@ -28,6 +29,17 @@ function App() {
       console.log(error.response.data)
     }}
 
+    async function handleDelete() {
+      try{
+        const response = await axios.delete(`https://localhost:7114/api/Songs/${songs.id}`);
+      
+      if(response.status === 200){
+          await getAllSongs();
+      }}
+      catch(error){
+          console.log(error.response.data)
+      }}
+
   function createNewSearch(searchText) {
     let sanitizedText = searchText.toLowerCase();
     let filteredSongs = songs.filter((el) => {
@@ -45,6 +57,7 @@ function App() {
   return (
     <div>
       <div>
+        <SongRow songRowProp={handleDelete}/>
         {songs && <MusicTable parentTable={songs} />}
       </div>
       <div>
