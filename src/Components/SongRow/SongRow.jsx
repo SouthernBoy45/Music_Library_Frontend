@@ -1,16 +1,7 @@
 import React from "react";
-import axios from "axios";
-const SongRow = ({ song, index, getAllSongs }) => {
-  //   async function handleDelete() {
-  //     try{
-  //       const response = await axios.delete(`https://localhost:7114/api/Songs/${song.id}`);
+import axios from "axios"; 
 
-  //     if(response.status === 200){
-  //         return(response.data)
-  //     }}
-  //     catch(error){
-  //         console.log(error.response.data)
-  //     }}
+const SongRow = ({ song, index, getAllSongs }) => {
 
   async function handleDelete() {
     try {

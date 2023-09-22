@@ -1,17 +1,19 @@
 import React from "react";
 import SongRow from "../SongRow/SongRow";
 
+
 const MusicTable = ({ parentTable, getAllSongs }) => {
   return (
-    <table className="table">
+    <table className="table table-hover">
       <thead>
         <tr>
-          <th> </th>
+         <th>    </th>
           <th>Title</th>
           <th>Artist</th>
           <th>Album</th>
           <th>Release Date</th>
           <th>Genre</th>
+          <th>    </th>
         </tr>
       </thead>
       <tbody>

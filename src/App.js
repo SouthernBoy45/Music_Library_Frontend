@@ -3,7 +3,8 @@ import axios from "axios";
 import MusicTable from "./Components/MusicTable/MusicTable";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import AddSongForm from "./Components/AddSongForm/AddSongForm";
-import SongRow from "./Components/SongRow/SongRow";
+import "./App.css";
+
 
 function App() {
   const [songs, setSongs] = useState([]);
@@ -50,15 +51,29 @@ function App() {
   }
 
   return (
-    <div>
-      <div>
-        {songs && <MusicTable getAllSongs={getAllSongs} parentTable={songs} />}
-      </div>
-      <div>
-        <SearchBar searchBarProperty={createNewSearch} />
-      </div>
-      <div>
-        <AddSongForm addSongFormProp={addNewSong} />
+    <div style={{backgroundImage: `url(${"/MusicBackgroundImage.jpg"})`,
+                }}>
+      <div className="container-fluid">
+        <div className="row">
+          <h1 style={{ margin: "1em", color: "whitesmoke" }}>
+            Your Music Library
+          </h1>
+          <div className="col-md-6">
+            <div className="border-box">
+              <SearchBar searchBarProperty={createNewSearch} />
+            </div>
+            <div className="border-box">
+              {songs && (
+                <MusicTable getAllSongs={getAllSongs} parentTable={songs} />
+              )}
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="border-box">
+              <AddSongForm addSongFormProp={addNewSong} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
